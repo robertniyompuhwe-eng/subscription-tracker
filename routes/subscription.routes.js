@@ -12,7 +12,7 @@ subscriptionRouter.delete('/',(req,res)=>{res.send('delete  subscription')})
 
 subscriptionRouter.get('/user/:id',(req,res)=>{res.send('get all user subscription')})
 
-subscriptionRouter.put('/:id/cancel',(req,res)=>{res.send('get user subscription')})
+subscriptionRouter.put('/:id/cancel',(req,res)=>{res.send('cancel subscription')})
 
 subscriptionRouter.get('/upcoming-renewals',(req,res)=>{res.send('get upcoming renewals')})
 
