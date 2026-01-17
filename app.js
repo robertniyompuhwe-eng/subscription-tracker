@@ -7,7 +7,7 @@ import arcjetMiddleware from "./milddleware/arcjet.middleware.js"
 import userRouter from "./routes/user.routes.js"
 import authRouter from './routes/auth.routes.js'
 import subscriptionRouter from "./routes/subscription.routes.js"
-import arcjet from "./milddleware/arcjet.middleware.js"
+
 
 const app = express()
 
