@@ -24,10 +24,11 @@ export const signUp = async (req, res, next) => {
       [{
         username,
         email,
-        password: hashedPassword
+       password:hashedPassword
       }],
       { session }
     )
+    console.log(hashedPassword)
 
     const token = jwt.sign(
       { userId: newUser[0]._id },
@@ -42,12 +43,15 @@ export const signUp = async (req, res, next) => {
       httpOnly: true,
       sameSite: "strict",
       secure: process.env.NODE_ENV === "production",
-      maxAge: 24 * 60 * 60 * 1000 // 1 day
+      maxAge: 24 * 60 * 60 * 1000 
     })
 
     res.status(201).json({
       success: true,
-      message: "User registered successfully"
+      message: "User registered successfully",
+      user:newUser[0],
+     token,
+     
     })
 
   } catch (error) {
@@ -55,4 +59,33 @@ export const signUp = async (req, res, next) => {
     session.endSession()
     next(error)
   }
+}
+
+export const signIn= async (req,res,next)=>{
+try{
+const {email,password}=req.body
+const user=await User.findOne({email})
+if(!user){
+  const error= new Error('the user is not found')
+  error.statusCode=404
+  throw error
+}
+const isPasswordValid=await bcrypt.compare(password,user.password)
+if(!isPasswordValid){
+  const error= new Error("the password is not valid")
+  error.statusCode=401
+  throw error
+}
+const token=jwt.sign({userId:user._id},JWT_SECRET,{expiresIn:JWT_EXPIRES})
+res.status(200).send({
+  success:true,
+  message:"you have signed in successfully",
+  data:{
+    token,
+   user 
+  }
+})
+}catch(error){
+next(error)
+}
 }

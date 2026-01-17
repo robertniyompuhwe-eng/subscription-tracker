@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const subscritiptionSchema=new mongoose.Schema({
-    name:{
+    username:{
         type:String,
         required:[true,'the subscription name is required'],
         trim:true,
@@ -82,10 +82,6 @@ subscritiptionSchema.pre('save',function(next){
 if(this.renewalDate<new Date()){
     this.status='expired'
 }
-
-
-next()
-
 })
 const Subscription= mongoose.model('subscription',subscritiptionSchema)
 

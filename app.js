@@ -3,10 +3,11 @@ import { PORT } from "./config/env.js"
 import cookieParser from "cookie-parser"
 import connectToDatabase from "./database/mongodb.js"
 import errorMiddleware from "./milddleware/error.middleware.js"
-
+import arcjetMiddleware from "./milddleware/arcjet.middleware.js"
 import userRouter from "./routes/user.routes.js"
 import authRouter from './routes/auth.routes.js'
 import subscriptionRouter from "./routes/subscription.routes.js"
+import arcjet from "./milddleware/arcjet.middleware.js"
 
 const app = express()
 
@@ -14,6 +15,7 @@ const app = express()
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
+app.use(arcjetMiddleware)
 
 // routes
 app.use('/api/v1/auth', authRouter)
@@ -23,7 +25,7 @@ app.get('/', (req, res) => {
     res.send('welcome to the subscription tracker')
 })
 
-// error middleware comes last
+
 app.use(errorMiddleware)
 
 app.listen(PORT, async () => {

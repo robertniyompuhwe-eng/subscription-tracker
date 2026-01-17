@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const userSchema= new mongoose.Schema({
-    name:{
+   username:{
         type:String,
         required:[true,'username is required'],
         trim:true,
@@ -14,15 +14,15 @@ const userSchema= new mongoose.Schema({
         unique:true,
         minlength:5,
         maxlength:255,
-        match:[/\s+@\s+\.\s+/,'you have entered invalid email']  
+        match:[/^\S+@\S+\.\S+$/,'you  entered invalid email']  
     },
-    passward:{
+    password:{
         type:String,
-        require:[true,"the passward is required"],
+        required:[true,"the password is required"],
         minlength:6
 
     }
 },{timestamps:true})
 
-const  User=mongoose.model('u ser',userSchema)
+const  User=mongoose.model('user',userSchema)
 export default User
