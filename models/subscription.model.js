@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 const subscritiptionSchema=new mongoose.Schema({
-    username:{
+    name:{
         type:String,
         required:[true,'the subscription name is required'],
         trim:true,
@@ -43,15 +43,11 @@ const subscritiptionSchema=new mongoose.Schema({
     },
     startDate:{
         type:Date,
-        required:true,
-        validate:{
-            validator:(value)=>value<= new Date(),
-            message:'start date must in the past or the current date'
-        }
+        default:new Date()
     },
      renewalDate:{
         type:Date,
-        required:true,
+        // required:true,
         validate:{
             validator:function(value){
              value>this.startDate
