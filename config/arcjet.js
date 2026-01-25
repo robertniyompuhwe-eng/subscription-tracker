@@ -7,7 +7,7 @@ const app = express();
 const port = 3000;
 
 export const aj = arcjet({
-  // Get your site key from https://app.arcjet.com and set it as an environment
+  // Get your site key from https://app.arcjet.com and set it as an environmen
   // variable rather than hard coding.
   key:ARCJET_KEY,
   rules: [
