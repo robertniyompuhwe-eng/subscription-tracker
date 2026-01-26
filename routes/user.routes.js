@@ -5,7 +5,7 @@ const userRouter=Router()
 
 userRouter.get('/',getUsers)
 
-userRouter.get('/:id',(req,res)=>authorize,getUSer)
+userRouter.get('/:id',authorize,getUSer)
 
 userRouter.post('/',(req,res)=>{res.send({title:'create new user'})})
 

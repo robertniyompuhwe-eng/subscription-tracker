@@ -15,7 +15,7 @@ next(error)
 export const getUSer= async(req,res,next)=>{
     try{
     const user=await findOne({_id:req.params.id}).select('-password')
-
+///faaaaaaaaaaaa
     if(!user){
         const error=new Error("user is not found")
         error.statusCode=404
