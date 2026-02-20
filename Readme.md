@@ -11,4 +11,4 @@ A simple app to manage and track subscriptions.
 ```bash
 git clone https://github.com/robertniyompuhwe-eng/subscription-tracker.git
 cd subscription-tracker
-npm install
+npm install subscription-traker
