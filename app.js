@@ -3,7 +3,7 @@ import { PORT } from "./config/env.js"
 import cookieParser from "cookie-parser"
 import connectToDatabase from "./database/mongodb.js"
 import errorMiddleware from "./milddleware/error.middleware.js"
-import arcjetMiddleware from "./milddleware/arcjet.middleware.js"
+
 import userRouter from "./routes/user.routes.js"
 import authRouter from './routes/auth.routes.js'
 import subscriptionRouter from "./routes/subscription.routes.js"

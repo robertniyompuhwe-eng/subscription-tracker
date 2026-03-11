@@ -1,5 +1,4 @@
 import Subscription from "../models/subscription.model.js"
-import { flowClient  } from "../config/upstash.js"
 
 export const createSubscription= async(req,res,next)=>{
     try{
