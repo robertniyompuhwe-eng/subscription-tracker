@@ -1,7 +1,7 @@
 import mongoose from 'mongoose'
 import { DB_URI,NODE_ENV } from '../config/env.js'
 if(!DB_URI){
-    throw new Error('please define the mongodb uri soin enviromment cariable insid .env.local or production');
+    throw new Error('please define the mongodb uri so in enviromment cariable insid .env.local or production');
 }
 const connectToDatabase=async ()=>{
     try{
